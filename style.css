@@ -116,6 +116,22 @@ nav ul a:hover {
   color: rgb(192, 19, 19);
   text-decoration: underline;
 }
+@keyframes fallingAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(-80px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.falling-text{
+  opacity: 0;
+  animation: fallingAnimation 0.7s ease-in-out forwards;
+}
+
 .menuBtn {
   cursor: pointer;
 }
@@ -124,19 +140,18 @@ nav ul a:hover {
   display: flex;
   left: 0;
   right: 0;
-  background-color: black;
-  height: 200px;
+  background-color: rgb(0, 0, 0);
+  height: 300px;
   color: white;
-  gap: 0.5em;
+  gap: 2rem;
   align-items: center;
-  border-radius: 10px;
   padding: 2em 1em;
   z-index: 1;
 }
 .mobile nav {
   display: flex;
   flex-direction: column;
-  padding-top: 5em;
+  padding-top: 5.5em;
 }
 .mobile nav a {
   color: inherit;
@@ -145,7 +160,7 @@ nav ul a:hover {
   margin-top: 0.2em;
 }
 .mobile nav a:hover {
-  color: red;
+  color: brown;
 }
 .hidden {
   display: none;
@@ -222,6 +237,7 @@ button:hover {
 }
 #About {
   background-color: whitesmoke;
+  padding: 0 1rem;
 }
 .about-content,
 .contact-content {
@@ -266,7 +282,7 @@ button:hover {
   width: 100%;
 }
 .h4-cont {
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 .skills-content .skills {
   display: flex;
@@ -288,6 +304,7 @@ button:hover {
 }
 .skills {
   cursor: pointer;
+  margin-bottom: 1rem;
 }
 #contact {
   background-color: rgb(224, 218, 210);
@@ -463,11 +480,29 @@ section {
   position: relative;
   top: -1rem;
 }
-.game-box {
-  background: var(--container-color);
+.game-box1{
+  background: #1B4242;
+  border-radius: 0.3rem; 
+}
+.game-box2{
+  background:  #1B4242;
   border-radius: 0.3rem;
 }
-.game-box:hover {
+.game-box3{
+  background:  #1B4242;
+  border-radius: 0.3rem;
+}
+.game-box1:hover {
+  transform: translateY(-10px);
+  transition: 0.4s;
+  cursor: pointer;
+}
+.game-box2:hover {
+  transform: translateY(-10px);
+  transition: 0.4s;
+  cursor: pointer;
+}
+.game-box3:hover {
   transform: translateY(-10px);
   transition: 0.4s;
   cursor: pointer;
@@ -486,7 +521,7 @@ section {
   object-position: center;
   transform: scale(1.02);
   border-radius: 0.4rem;
-  box-shadow: 0px 10px 7px 0px rgb(23 27 68 / 80%);
+  box-shadow: 0px 10px 7px 0px #102222;
 }
 .game-box-title {
   font-size: 1rem;
@@ -499,15 +534,17 @@ section {
   margin: 2px 0;
 }
 .game-text p {
+  color: #9EC8B9;
   font-size: 0.6rem;
-  color: white;
 }
 .btn {
   font-size: 0.944rem;
-  font-weight: 500;
-  text-transform: uppercase;
+  font-weight: 550;
   margin-top: 0.5rem;
-  color: var(--main-color);
+  color: #609977;
+}
+.btn:hover{
+  color: white;
 }
 
 @media (max-width: 1050px) {
