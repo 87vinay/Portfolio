@@ -1,51 +1,53 @@
-const menuBtn = document.querySelector(".menuBtn");
+document.addEventListener("DOMContentLoaded", function() {
+  const toggleButton = document.getElementById('check-icon');
+  const mobileNav = document.querySelector('.mobile');
 
-menuBtn.addEventListener("click", () => {
-  document.querySelector(".mobile").classList.toggle("hidden");
-});
+  toggleButton.addEventListener('click', function() {
+    mobileNav.classList.toggle('hidden');
+  });
 
-let words = ["Hi I'm Vinay Sharma", "A Web Developer"],
-  part,
-  i = 0,
-  offset = 0,
-  len = words.length,
-  forwards = true,
-  skip_count = 0,
-  skip_delay = 15,
-  speed = 70;
+  let words = ["Hi I'm Vinay Sharma", "A Web Developer"],
+    part,
+    i = 0,
+    offset = 0,
+    len = words.length,
+    forwards = true,
+    skip_count = 0,
+    skip_delay = 15,
+    speed = 70;
 
-let wordflick = function () {
-  setInterval(function () {
-    if (forwards) {
-      if (offset >= words[i].length) {
-        ++skip_count;
-        if (skip_count == skip_delay) {
-          forwards = false;
-          skip_count = 0;
-        }
-      }
-    } else {
-      if (offset == 0) {
-        forwards = true;
-        i++;
-        offset = 0;
-        if (i >= len) {
-          i = 0;
-        }
-      }
-    }
-    part = words[i].substr(0, offset);
-    if (skip_count == 0) {
+  let wordflick = function() {
+    setInterval(function() {
       if (forwards) {
-        offset++;
+        if (offset >= words[i].length) {
+          ++skip_count;
+          if (skip_count == skip_delay) {
+            forwards = false;
+            skip_count = 0;
+          }
+        }
       } else {
-        offset--;
+        if (offset == 0) {
+          forwards = true;
+          i++;
+          offset = 0;
+          if (i >= len) {
+            i = 0;
+          }
+        }
       }
-    }
-    $(".word").text(part);
-  }, speed);
-};
+      part = words[i].substr(0, offset);
+      if (skip_count == 0) {
+        if (forwards) {
+          offset++;
+        } else {
+          offset--;
+        }
+      }
+      document.querySelector(".word").textContent = part;
+    }, speed);
+  };
 
-$(document).ready(function () {
+  words = words.map((word) => word.replace(/\n/g, ' '));
   wordflick();
 });

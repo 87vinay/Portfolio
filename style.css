@@ -131,10 +131,63 @@ nav ul a:hover {
   opacity: 0;
   animation: fallingAnimation 0.7s ease-in-out forwards;
 }
-
-.menuBtn {
+.icon-menu {
+  --gap: 5px;
+  --height-bar: 2.5px;
+  --pos-y-bar-one: 0;
+  --pos-y-bar-three: 0;
+  --scale-bar: 1;
+  --rotate-bar-one: 0;
+  --rotate-bar-three: 0;
+  width: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
   cursor: pointer;
+  position: relative;
 }
+
+.bar {
+  position: relative;
+  height: var(--height-bar);
+  width: 100%;
+  border-radius: .5rem;
+  background-color: #9941fc;
+}
+
+.bar--1 {
+  top: var(--pos-y-bar-one);
+  transform: rotate(var(--rotate-bar-one));
+  transition: top 200ms 100ms, transform 100ms;
+}
+
+.bar--2 {
+  transform: scaleX(var(--scale-bar));
+  transition: transform 150ms 100ms;
+}
+
+.bar--3 {
+  bottom: var(--pos-y-bar-three);
+  transform: rotate(var(--rotate-bar-three));
+  transition: bottom 200ms 100ms, transform 100ms;
+}
+
+.check-icon:checked + .icon-menu > .bar--1 {
+  transition: top 200ms, transform 200ms 100ms;
+}
+
+.check-icon:checked + .icon-menu > .bar--3 {
+  transition: bottom 200ms, transform 200ms 100ms;
+}
+
+.check-icon:checked + .icon-menu {
+  --pos-y-bar-one: calc(var(--gap) + var(--height-bar));
+  --pos-y-bar-three: calc(var(--gap) + var(--height-bar));
+  --scale-bar: 0;
+  --rotate-bar-one: 45deg;
+  --rotate-bar-three: -45deg;
+}
+
 .mobile nav {
   position: absolute;
   display: flex;
@@ -207,6 +260,7 @@ section {
   margin: auto;
 }
 .word {
+  white-space: pre-line;
   margin: 25px;
   color: black;
   font: 800 normal;
@@ -219,22 +273,41 @@ section {
   margin-top: 1.5em;
 }
 button {
-  background-color: rgb(42, 95, 95);
-  color: white !important;
-  font-size: 1.1rem;
-  border: none;
-  outline: none;
-  padding: 0.3em 2em;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 500;
+  padding: 15px 25px;
+  border: unset;
+  border-radius: 15px;
+  color: rgb(42, 95, 95);
+  z-index: 1;
+  background: #e8e8e8;
   position: relative;
+  font-size: 1.1rem;
+  font-weight: 525;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms;
+  overflow: hidden;
+  cursor: pointer;
+}
+button::before {
+  content: "";
+  position: absolute;
   top: 0;
-  transition: top 0.3s;
-}
-button:hover {
-  top: -5px;
-}
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: rgb(42, 95, 95);
+  z-index: -1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms
+ }
+ button:hover {
+  color: #e8e8e8;
+ }
+ button:hover::before {
+  width: 100%;
+ }
 #About {
   background-color: whitesmoke;
   padding: 0 1rem;
@@ -321,6 +394,9 @@ button:hover {
   padding: 2em;
   background: white;
 }
+.form-container:hover{
+  box-shadow: 0 0 8px rgb(108, 148, 234);
+}
 .form-container input,
 .form-container textarea {
   background-color: #e5e5f7;
@@ -329,6 +405,22 @@ button:hover {
   padding: 1em;
   font-size: 0.6rem;
   resize: none;
+}
+input[type="text"],
+input[type="email"],
+textarea {
+  display: block;
+  margin-bottom: 15px;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  transition: box-shadow 0.3s ease;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 .form-container button {
   margin-top: 1em !important;
@@ -378,9 +470,21 @@ footer ::selection {
   color: rgb(42, 95, 95);
   border-radius: 50%;
 }
+.socialMedia .fa-linkedin-in:hover{
+  color: #0077B5
+}
+.socialMedia .fa-github:hover{
+  color: white;
+}
+.socialMedia .fa-twitter:hover{
+  color: #1DA1F2;
+}
+.socialMedia .fa-instagram:hover{
+  color: #ee1a5b;
+}
 
 @media all and (min-width: 700px) {
-  .menuBtn,
+  .icon-menu,
   .mobile {
     display: none;
   }
@@ -480,32 +584,14 @@ section {
   position: relative;
   top: -1rem;
 }
-.game-box1{
-  background: #1B4242;
-  border-radius: 0.3rem; 
-}
-.game-box2{
+.card-box{
   background:  #1B4242;
   border-radius: 0.3rem;
 }
-.game-box3{
-  background:  #1B4242;
-  border-radius: 0.3rem;
-}
-.game-box1:hover {
+.card-box:hover{
   transform: translateY(-10px);
   transition: 0.4s;
-  cursor: pointer;
-}
-.game-box2:hover {
-  transform: translateY(-10px);
-  transition: 0.4s;
-  cursor: pointer;
-}
-.game-box3:hover {
-  transform: translateY(-10px);
-  transition: 0.4s;
-  cursor: pointer;
+  cursor: pointer; 
 }
 .game-text {
   padding: 10px;
@@ -542,6 +628,8 @@ section {
   font-weight: 550;
   margin-top: 0.5rem;
   color: #609977;
+  border: 1px solid  rgb(42, 95, 95);
+  border-radius: 5px;
 }
 .btn:hover{
   color: white;

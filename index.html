@@ -14,7 +14,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -34,10 +33,12 @@
         <a href="#contact" class="falling-text">Contact</a>
       </ul>
     </nav>
-
-    <div class="menuBtn">
-      <i class="fa-solid fa-bars"></i>
-    </div>
+    <input hidden="" class="check-icon" id="check-icon" name="check-icon" type="checkbox">
+    <label class="icon-menu" for="check-icon">
+        <div class="bar bar--1"></div>
+        <div class="bar bar--2"></div>
+        <div class="bar bar--3"></div>
+    </label>
   </header>
 
   <div class="mobile hidden">
@@ -121,7 +122,7 @@
     <p class="heading-p">Here you will find more information about my 
       projects and you can also check the <br>live view of the projects.</p>
     <div class="games-content">
-      <div class="game-box1">
+      <div class="card-box">
         <img src="images/starbucksimg.png" alt="img1" class="game-box-img" />
         <div class="game-text">
           <h2 class="game-box-title">Starbucks Clone</h2>
@@ -131,7 +132,7 @@
           <a href= "https://87vinay.github.io/starbucksclone/" target="_blank" class="btn">See Live</a>
         </div>
       </div>
-      <div class="game-box2">
+      <div class="card-box">
         <img src="images/nftcanvashubimg.png" alt="img2" class="game-box-img" />
         <div class="game-text">
           <h2 class="game-box-title">NFTCanvasHub</h2>
@@ -139,7 +140,7 @@
           <a href= "https://87vinay.github.io/NFTCanvasHub/" target="_blank" class="btn">See Live</a>
         </div>
       </div>
-      <div class="game-box3">
+      <div class="card-box">
         <img src="images/quizwebsite.png" alt="img3" class="game-box-img" />
         <div class="game-text">
           <h2 class="game-box-title">Quiz Website</h2>
