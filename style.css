@@ -152,7 +152,7 @@ nav ul a:hover {
   height: var(--height-bar);
   width: 100%;
   border-radius: .5rem;
-  background-color: #9941fc;
+  background-color: black;
 }
 
 .bar--1 {
