@@ -129,7 +129,7 @@ nav ul a:hover {
 
 .falling-text{
   opacity: 0;
-  animation: fallingAnimation 0.7s ease-in-out forwards;
+  animation: fallingAnimation 1.2s ease-in-out forwards;
 }
 .icon-menu {
   --gap: 5px;
@@ -312,6 +312,9 @@ button::before {
   background-color: whitesmoke;
   padding: 0 1rem;
 }
+.heading{
+  padding-top: 0.5rem;
+}
 .about-content,
 .contact-content {
   text-align: center;
@@ -362,7 +365,7 @@ button::before {
   gap: 1em;
   flex-wrap: wrap;
   min-width: 100%;
-  margin-top: 3rem;
+  margin-top: 1.7rem;
 }
 .skills .fa-brands {
   font-size: 1rem;
